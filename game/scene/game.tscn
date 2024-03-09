@@ -1,20 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnv4q76vqid3"]
+[gd_scene load_steps=3 format=3 uid="uid://cnv4q76vqid3"]
 
+[ext_resource type="Script" path="res://game/script/card_manager.gd" id="1_k25xc"]
 [ext_resource type="PackedScene" uid="uid://12gtpxpb8621" path="res://game/scene/card.tscn" id="1_t8l60"]
 
 [node name="Game" type="Node2D"]
 
-[node name="Card" parent="." instance=ExtResource("1_t8l60")]
-position = Vector2(60, 59)
+[node name="CardManager" type="Node" parent="."]
+script = ExtResource("1_k25xc")
 
-[node name="Card2" parent="." instance=ExtResource("1_t8l60")]
-position = Vector2(108, 61)
+[node name="TmrFlipDelay" type="Timer" parent="CardManager"]
+wait_time = 2.0
+one_shot = true
 
-[node name="Card3" parent="." instance=ExtResource("1_t8l60")]
-position = Vector2(149, 59)
+[node name="CardPositions" type="Node" parent="CardManager"]
 
-[node name="Card4" parent="." instance=ExtResource("1_t8l60")]
-position = Vector2(72, 108)
+[node name="Cards" type="Node" parent="CardManager"]
 
-[node name="Card5" parent="." instance=ExtResource("1_t8l60")]
-position = Vector2(136, 105)
+[node name="Card" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
+position = Vector2(30, 29)
+
+[node name="Card2" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
+position = Vector2(61, 29)
+
+[node name="Card3" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
+position = Vector2(91, 30)
+
+[node name="Card4" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
+position = Vector2(28, 71)
+
+[node name="Card5" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
+position = Vector2(61, 72)
+
+[node name="Card6" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
+position = Vector2(91, 72)
+
+[connection signal="timeout" from="CardManager/TmrFlipDelay" to="CardManager" method="_on_tmr_flip_delay_timeout"]
