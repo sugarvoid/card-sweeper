@@ -13,6 +13,7 @@ func _ready():
 	for c: Card in $Cards.get_children():
 		c.connect("was_clicked", flip_over_card)
 		c.connect("remove_me", remove_card)
+		c.connect("done_flipping", add_to_array)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,22 +26,26 @@ func put_cards_facedown() -> void:
 		c.facedown()
 	faceup_cards.clear()
 
+func add_to_array(c: Card) -> void:
+	faceup_cards.push_back(c)
+	if faceup_cards.size() == 2:
+		check_cards()
+
 func flip_over_card(c: Card) -> void:
-	if cards_clicked < 2:
+	if faceup_cards.size() < 2:
 		if !c.is_face_showing:
-			cards_clicked += 1
 			c.faceup()
-			faceup_cards.push_back(c)
-			if cards_clicked == 2:
-				#TODO: Check if cards match 
+
+func check_cards() -> void:
+	#TODO: Check if cards match 
 				if faceup_cards[0].card_type == faceup_cards[1].card_type:
 					print("they match")
 					#TODO: Remove cards from board
 					for card in faceup_cards:
 						card.fade_away()
+					faceup_cards.clear()
 				else:
 					$TmrFlipDelay.start()
-				
 
 func remove_card(c: Card) -> void:
 	print(str("remove card: ", c.name))

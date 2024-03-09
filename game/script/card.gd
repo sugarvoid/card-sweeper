@@ -3,6 +3,7 @@ extends Node2D
 
 signal was_clicked(c: Card)
 signal remove_me(c: Card)
+signal done_flipping(c: Card)
 
 enum CARD_TYPE {
 	A = 1,
@@ -63,3 +64,5 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "fade_away":
 		emit_signal("remove_me", self)
+	elif anim_name == "show_face":
+		emit_signal("done_flipping", self)
