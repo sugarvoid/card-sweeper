@@ -6,19 +6,15 @@ signal pair_made
 signal card_flipped_over(c:Card)
 signal on_gameover
 
-#var all_cards: Array[Card]
-var cards_clicked: int
-
-var faceup_cards: Array[Card]
-var graveyard_card: Array[Card]
-var cards_on_board: Array[Card]
-
 const NORMAL_CHANCE = 0.70
 const SKULL_CHANCE = 0.20
 const CROSS_CHANCE = 0.10
 
+var cards_clicked: int
+var faceup_cards: Array[Card]
+var graveyard_card: Array[Card]
+var cards_on_board: Array[Card]
 var can_click: bool = false
-
 var slots: Array[bool]
 var card_amounts: Dictionary = {
 	"1" : 0,
@@ -29,16 +25,13 @@ var card_amounts: Dictionary = {
 	"6" : 0,
 }
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	
+
+func _ready() -> void:
 	slots.resize(20)
 	$TmrStartGame.start(5)
-	
 	new_game_shuffle()
 	for c: Card in $Cards.get_children():
 		add_card_to_graveyard(c)
-		
 		var card_num: int = int(c.name.substr(4,2).strip_edges())
 		c.slot = card_num
 		c.set_board_position(get_board_pos(card_num))
@@ -52,13 +45,9 @@ func _ready():
 	for i in range(20):
 		add_a_card_to_borad()
 		await get_tree().create_timer(0.2).timeout
-	
+		
 	print(card_amounts)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
