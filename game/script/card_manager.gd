@@ -3,6 +3,7 @@ extends Node
 
 signal on_card_amount_change(num: int)
 signal pair_made
+signal card_flipped_over(c:Card)
 
 #var all_cards: Array[Card]
 var cards_clicked: int
@@ -45,8 +46,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-	##print(faceup_cards.size())
+
+	print(cards_clicked)
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -118,9 +119,11 @@ func put_cards_facedown() -> void:
 	for c in faceup_cards:
 		c.facedown()
 	faceup_cards.clear()
+	emit_signal("card_flipped_over", faceup_cards)
 
 func add_to_array(c: Card) -> void:
 	faceup_cards.push_back(c)
+	emit_signal("card_flipped_over", faceup_cards)
 	if faceup_cards.size() == 2:
 		check_cards()
 
@@ -133,22 +136,24 @@ func are_all_cards_facedown() -> bool:
 	return true 
 
 func flip_over_card(c: Card) -> void:
-	if cards_clicked < 2 and can_click:
-		if faceup_cards.size() < 2:
-			if !c.is_face_showing:
-				cards_clicked += 1
-				c.faceup()
+	if faceup_cards.size() < 2 and can_click and cards_clicked < 2:
+		can_click = false
+		if !c.is_face_showing:
+			cards_clicked += 1
+			c.faceup()
+			await get_tree().create_timer(0.25).timeout
+			can_click = true
 
 func check_cards() -> void:
 	#TODO: Check if cards match 
+	cards_clicked = 0
 	if faceup_cards[0].card_type == faceup_cards[1].card_type:
 		print("they match")
+		can_click = false
 		emit_signal("pair_made")
 		#TODO: Remove cards from board
 		for card in faceup_cards:
 			card.fade_away()
-			
-		
 		if faceup_cards[0].card_type == 6:
 			pass
 			#TODO: Remove one skull card
@@ -156,7 +161,10 @@ func check_cards() -> void:
 			pass
 			#TODO: Player matched skull
 		faceup_cards.clear()
-		cards_clicked = 0
+		emit_signal("card_flipped_over", faceup_cards)
+		
+		await get_tree().create_timer(0.5).timeout
+		can_click = true
 	else:
 		$TmrFlipDelay.start()
 

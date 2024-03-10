@@ -17,7 +17,7 @@ script = ExtResource("1_nfen0")
 offset_left = -15.0
 offset_right = 331.0
 offset_bottom = 18.0
-color = Color(0.0431373, 0.0431373, 0.0431373, 1)
+color = Color(0.129412, 0.129412, 0.137255, 1)
 
 [node name="LblCardsLeft" type="Label" parent="HUD"]
 offset_left = 191.0
@@ -46,8 +46,30 @@ text = "00:00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="lblCard_1" type="Label" parent="HUD"]
+offset_left = -39.0
+offset_top = 22.0
+offset_right = 108.0
+offset_bottom = 54.0
+theme_override_fonts/font = ExtResource("3_8l6uw")
+theme_override_font_sizes/font_size = 16
+text = "card 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lblCard_2" type="Label" parent="HUD"]
+offset_left = -41.0
+offset_top = 47.0
+offset_right = 106.0
+offset_bottom = 79.0
+theme_override_fonts/font = ExtResource("3_8l6uw")
+theme_override_font_sizes/font_size = 16
+text = "card 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="BackGround" type="Sprite2D" parent="."]
-position = Vector2(164, 163)
+position = Vector2(-309, 184)
 scale = Vector2(21.875, 20.9375)
 texture = ExtResource("4_7goxy")
 
@@ -109,19 +131,19 @@ position = Vector2(192, 184)
 position = Vector2(222, 184)
 
 [node name="15" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(102, 229)
+position = Vector2(102, 224)
 
 [node name="16" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(132, 229)
+position = Vector2(132, 224)
 
 [node name="17" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(162, 229)
+position = Vector2(162, 224)
 
 [node name="18" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(192, 229)
+position = Vector2(192, 224)
 
 [node name="19" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(222, 229)
+position = Vector2(222, 224)
 
 [node name="Cards" type="Node2D" parent="CardManager"]
 

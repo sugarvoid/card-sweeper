@@ -23,6 +23,7 @@ var slot: int
 var board_position: Vector2
 var is_on_board: bool 
 
+
 var positions: Array[Vector2] = [
 	Vector2()
 ]
@@ -66,7 +67,7 @@ func change_to_back():
 
 func slide_to_position() -> void:
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "position", board_position, 0.5)
+	tween.tween_property(self, "position", board_position, 0.2)
 	tween.tween_callback(on_board_placement)
 
 func fake_shuffle() -> void:
@@ -83,7 +84,7 @@ func on_board_placement():
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index==1:
-		print(self.card_type)
+		#print(self.card_type)
 		emit_signal("was_clicked", self)
 
 

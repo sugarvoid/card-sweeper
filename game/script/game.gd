@@ -12,6 +12,7 @@ func _ready():
 	print("game ready")
 	card_mamager.connect("on_card_amount_change", HUD.update_cards_left)
 	card_mamager.connect("pair_made", lower_pairs_left)
+	card_mamager.connect("card_flipped_over", HUD.update_card_labels)
 	HUD.update_cards_left(card_mamager.cards_on_board.size())
 	HUD.update_pair_label(pairs_left)
 

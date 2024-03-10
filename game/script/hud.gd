@@ -16,3 +16,14 @@ func update_cards_left(num:int) -> void:
 
 func update_pair_label(num:int) -> void:
 	lbl_pairs_left.text = str("Pairs Left: ", num)
+
+func update_card_labels(cards: Array[Card]) -> void:
+	if cards.size() == 0:
+		$lblCard_1.text = str("Card 1: ")
+		$lblCard_2.text = str("Card 2: ")
+	elif cards.size() == 1:
+		$lblCard_1.text = str("Card 1: ", cards[0].name)
+	elif cards.size() == 2:
+		$lblCard_2.text = str("Card 2: ", cards[1].name)
+	
+
