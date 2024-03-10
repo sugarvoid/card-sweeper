@@ -18,6 +18,13 @@ offset_right = 261.0
 offset_bottom = 32.0
 text = "Cards Left: "
 
+[node name="LblPairsLeft" type="Label" parent="HUD"]
+offset_left = 29.0
+offset_top = 12.0
+offset_right = 116.0
+offset_bottom = 35.0
+text = "Pairs Left: "
+
 [node name="CardManager" type="Node" parent="."]
 script = ExtResource("1_k25xc")
 

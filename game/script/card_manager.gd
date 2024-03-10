@@ -2,6 +2,7 @@ class_name CardManager
 extends Node
 
 signal on_card_amount_change(num: int)
+signal pair_made
 
 #var all_cards: Array[Card]
 var cards_clicked: int
@@ -9,6 +10,10 @@ var cards_clicked: int
 var faceup_cards: Array[Card]
 var graveyard_card: Array[Card]
 var cards_on_board: Array[Card]
+
+const NORMAL_CHANCE = 0.70
+const SKULL_CHANCE = 0.20
+const CROSS_CHANCE = 0.10
 
 var can_click: bool = false
 
@@ -35,7 +40,6 @@ func _ready():
 		add_a_card_to_borad()
 		await get_tree().create_timer(0.2).timeout
 	
-	print(slots)
 	
 
 
@@ -64,12 +68,31 @@ func _gen_card_type() -> int:
 	randomize()
 	var roll = randf()
 	
-	if roll < 0.6: #60% chance
+
+	
+	print('rand')
+	if roll <= NORMAL_CHANCE:
+		print("normal")
 		return randi_range(1,4)
-	elif roll < 0.8: #20% chance
+	elif roll > NORMAL_CHANCE && roll <= (NORMAL_CHANCE + SKULL_CHANCE):
+		print("skull")
 		return Card.CARD_TYPE.BAD
-	else: #10% chance
+	elif roll > (NORMAL_CHANCE + SKULL_CHANCE):
+		print("cross")
 		return Card.CARD_TYPE.CLAEN
+	
+	return -99
+	
+	#if roll < 0.6: #70% chance
+		#print("normal")
+		#return randi_range(1,4)
+	#elif roll < 0.3: #20% chance
+		#print("skull")
+		#return Card.CARD_TYPE.BAD
+		#
+	#else: #10% chance
+		#print("cross")
+		#return Card.CARD_TYPE.CLAEN
 
 
 func add_a_card_to_borad() -> void:
@@ -89,7 +112,6 @@ func add_card_to_graveyard(c: Card) -> void:
 	graveyard_card.push_back(c)
 	cards_on_board.erase(c)
 	emit_signal("on_card_amount_change", cards_on_board.size())
-	print(slots)
 
 func put_cards_facedown() -> void:
 	cards_clicked = 0
@@ -121,17 +143,20 @@ func check_cards() -> void:
 	#TODO: Check if cards match 
 	if faceup_cards[0].card_type == faceup_cards[1].card_type:
 		print("they match")
+		emit_signal("pair_made")
 		#TODO: Remove cards from board
 		for card in faceup_cards:
 			card.fade_away()
-		faceup_cards.clear()
-		cards_clicked = 0
+			
+		
 		if faceup_cards[0].card_type == 6:
 			pass
 			#TODO: Remove one skull card
 		if faceup_cards[0].card_type == 5:
 			pass
 			#TODO: Player matched skull
+		faceup_cards.clear()
+		cards_clicked = 0
 	else:
 		$TmrFlipDelay.start()
 
