@@ -20,9 +20,9 @@ A card matching game
 
 
 ## Credits
-### Programming :computer: 
+### Programming/Sprites
 - SugarVoid
-- SugarVoid
+
 ### Font
 - Monogram by [datagoblin](https://datagoblin.itch.io/monogram) is licensed under [CC0](https://creativecommons.org/publicdomain/zero/1.0/)
 ### Music :musical_keyboard:
