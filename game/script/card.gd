@@ -19,7 +19,13 @@ var is_face_showing: bool = false
 
 const BACK_FRAME = 0
 var front_frame: int = 1
+var slot: int
+var board_position: Vector2
+var is_on_board: bool 
 
+var positions: Array[Vector2] = [
+	Vector2()
+]
 
 
 # Called when the node enters the scene tree for the first time.
@@ -33,6 +39,9 @@ func reset() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func set_board_position(pos: Vector2):
+	board_position = pos
 
 func setup(type: int):
 	self.card_type = type
@@ -54,7 +63,23 @@ func change_to_front():
 
 func change_to_back():
 	$Sprite2D.frame = BACK_FRAME
-	
+
+func slide_to_position() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "position", board_position, 0.5)
+	tween.tween_callback(on_board_placement)
+
+func fake_shuffle() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "position", Vector2(166,166), 1)
+	await get_tree().create_timer(0.2).timeout
+	await tween.finished
+	var tween2 = get_tree().create_tween()
+	tween2.tween_property(self, "position", board_position, 1)
+	tween2.tween_callback(on_board_placement)
+
+func on_board_placement():
+	pass
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index==1:

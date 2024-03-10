@@ -30,54 +30,159 @@ one_shot = true
 
 [node name="CardPositions" type="Node" parent="CardManager"]
 
-[node name="Cards" type="Node" parent="CardManager"]
+[node name="0" type="Marker2D" parent="CardManager/CardPositions"]
+position = Vector2(70, 95)
 
-[node name="Card" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
-position = Vector2(56, 79)
+[node name="1" type="Marker2D" parent="CardManager/CardPositions"]
+position = Vector2(100, 95)
+
+[node name="2" type="Marker2D" parent="CardManager/CardPositions"]
+position = Vector2(130, 95)
+
+[node name="3" type="Marker2D" parent="CardManager/CardPositions"]
+position = Vector2(160, 95)
+
+[node name="4" type="Marker2D" parent="CardManager/CardPositions"]
+position = Vector2(190, 95)
+
+[node name="5" type="Marker2D" parent="CardManager/CardPositions"]
+position = Vector2(70, 135)
+
+[node name="6" type="Marker2D" parent="CardManager/CardPositions"]
+position = Vector2(100, 135)
+
+[node name="7" type="Marker2D" parent="CardManager/CardPositions"]
+position = Vector2(130, 135)
+
+[node name="8" type="Marker2D" parent="CardManager/CardPositions"]
+position = Vector2(160, 135)
+
+[node name="9" type="Marker2D" parent="CardManager/CardPositions"]
+position = Vector2(190, 135)
+
+[node name="10" type="Marker2D" parent="CardManager/CardPositions"]
+position = Vector2(70, 175)
+
+[node name="11" type="Marker2D" parent="CardManager/CardPositions"]
+position = Vector2(100, 175)
+
+[node name="12" type="Marker2D" parent="CardManager/CardPositions"]
+position = Vector2(130, 175)
+
+[node name="13" type="Marker2D" parent="CardManager/CardPositions"]
+position = Vector2(160, 175)
+
+[node name="14" type="Marker2D" parent="CardManager/CardPositions"]
+position = Vector2(190, 175)
+
+[node name="15" type="Marker2D" parent="CardManager/CardPositions"]
+position = Vector2(70, 220)
+
+[node name="16" type="Marker2D" parent="CardManager/CardPositions"]
+position = Vector2(100, 220)
+
+[node name="17" type="Marker2D" parent="CardManager/CardPositions"]
+position = Vector2(130, 220)
+
+[node name="18" type="Marker2D" parent="CardManager/CardPositions"]
+position = Vector2(160, 220)
+
+[node name="19" type="Marker2D" parent="CardManager/CardPositions"]
+position = Vector2(190, 220)
+
+[node name="Cards" type="Node2D" parent="CardManager"]
+
+[node name="Card0" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
+position = Vector2(267, 174)
+card_type = 1
+
+[node name="Card1" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
+position = Vector2(297, 174)
 card_type = 1
 
 [node name="Card2" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
-position = Vector2(93, 79)
+position = Vector2(327, 174)
 card_type = 1
 
 [node name="Card3" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
-position = Vector2(128, 81)
-card_type = 2
+position = Vector2(415, 170)
+card_type = 1
 
 [node name="Card4" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
-position = Vector2(56, 124)
-card_type = 3
+position = Vector2(478, 174)
+card_type = 1
 
 [node name="Card5" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
-position = Vector2(92, 123)
-card_type = 4
+position = Vector2(274, 210)
+card_type = 1
 
 [node name="Card6" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
-position = Vector2(126, 123)
-card_type = 5
+position = Vector2(322, 225)
+card_type = 1
 
 [node name="Card7" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
-position = Vector2(56, 165)
+position = Vector2(366, 221)
 card_type = 1
 
 [node name="Card8" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
-position = Vector2(93, 165)
+position = Vector2(406, 223)
 card_type = 1
 
 [node name="Card9" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
-position = Vector2(128, 167)
-card_type = 2
+position = Vector2(453, 224)
+card_type = 1
 
 [node name="Card10" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
-position = Vector2(56, 210)
-card_type = 3
+position = Vector2(294, 291)
+card_type = 1
 
 [node name="Card11" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
-position = Vector2(92, 209)
-card_type = 4
+position = Vector2(339, 288)
+card_type = 1
 
 [node name="Card12" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
-position = Vector2(126, 209)
-card_type = 5
+position = Vector2(381, 291)
+card_type = 1
+
+[node name="Card13" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
+position = Vector2(430, 292)
+card_type = 1
+
+[node name="Card14" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
+position = Vector2(465, 294)
+card_type = 1
+
+[node name="Card15" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
+position = Vector2(269, 347)
+card_type = 1
+
+[node name="Card16" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
+position = Vector2(321, 344)
+card_type = 1
+
+[node name="Card17" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
+position = Vector2(360, 342)
+card_type = 1
+
+[node name="Card18" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
+position = Vector2(405, 343)
+card_type = 1
+
+[node name="Card19" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
+position = Vector2(447, 343)
+card_type = 1
+
+[node name="TmrStartGame" type="Timer" parent="CardManager"]
+
+[node name="LblStart" type="Label" parent="CardManager"]
+offset_left = 87.0
+offset_top = 110.0
+offset_right = 235.0
+offset_bottom = 179.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(74, 34)
+theme_override_font_sizes/font_size = 50
+text = "START"
 
 [connection signal="timeout" from="CardManager/TmrFlipDelay" to="CardManager" method="_on_tmr_flip_delay_timeout"]
+[connection signal="timeout" from="CardManager/TmrStartGame" to="CardManager" method="_on_tmr_start_game_timeout"]
