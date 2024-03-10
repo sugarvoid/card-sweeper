@@ -5,6 +5,7 @@ signal was_clicked(c: Card)
 signal remove_me(c: Card)
 signal done_flipping(c: Card)
 
+
 enum CARD_TYPE {
 	A = 1,
 	B,
@@ -14,33 +15,27 @@ enum CARD_TYPE {
 	CLAEN
 }
 
-@export var card_type: int
-var is_face_showing: bool = false
-
 const BACK_FRAME = 0
+
+var card_type: int
+var is_face_showing: bool = false
 var front_frame: int = 1
 var slot: int
 var board_position: Vector2
 var is_on_board: bool 
 
-
-var positions: Array[Vector2] = [
-	Vector2()
-]
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	setup(card_type)
-	pass # Replace with function body.
+	pass
+	#setup(card_type)
 
 func reset() -> void:
 	self.modulate.a = 225
+	self.is_face_showing = false
+	change_to_back()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-	
+
 func set_board_position(pos: Vector2):
 	board_position = pos
 
@@ -86,7 +81,6 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index==1:
 		#print(self.card_type)
 		emit_signal("was_clicked", self)
-
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "fade_away":

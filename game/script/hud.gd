@@ -1,13 +1,12 @@
 extends CanvasLayer
 
 @onready var lbl_cards_left = $LblCardsLeft
-# Called when the node enters the scene tree for the first time.
 @onready var lbl_pairs_left = $LblPairsLeft
+
+
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
@@ -26,4 +25,5 @@ func update_card_labels(cards: Array[Card]) -> void:
 	elif cards.size() == 2:
 		$lblCard_2.text = str("Card 2: ", cards[1].name)
 	
-
+func show_game_over() -> void:
+	$AnimationPlayer.play("drop_gameover")
