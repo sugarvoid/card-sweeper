@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnv4q76vqid3"]
+[gd_scene load_steps=7 format=3 uid="uid://cnv4q76vqid3"]
 
 [ext_resource type="Script" path="res://game/script/game.gd" id="1_4rrcw"]
 [ext_resource type="Script" path="res://game/script/card_manager.gd" id="1_k25xc"]
 [ext_resource type="Script" path="res://game/script/hud.gd" id="1_nfen0"]
 [ext_resource type="PackedScene" uid="uid://12gtpxpb8621" path="res://game/scene/card.tscn" id="1_t8l60"]
+[ext_resource type="FontFile" uid="uid://be783p5tfjbfw" path="res://game/asset/monogram.ttf" id="3_8l6uw"]
+[ext_resource type="Texture2D" uid="uid://bmv6bnyn543rx" path="res://game/asset/background.png" id="4_7goxy"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_4rrcw")
@@ -11,19 +13,43 @@ script = ExtResource("1_4rrcw")
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("1_nfen0")
 
+[node name="ColorRect" type="ColorRect" parent="HUD"]
+offset_left = -15.0
+offset_right = 331.0
+offset_bottom = 18.0
+color = Color(0.0431373, 0.0431373, 0.0431373, 1)
+
 [node name="LblCardsLeft" type="Label" parent="HUD"]
-offset_left = 174.0
-offset_top = 9.0
-offset_right = 261.0
-offset_bottom = 32.0
+offset_left = 191.0
+offset_top = 33.0
+offset_right = 278.0
+offset_bottom = 56.0
 text = "Cards Left: "
 
 [node name="LblPairsLeft" type="Label" parent="HUD"]
-offset_left = 29.0
-offset_top = 12.0
-offset_right = 116.0
-offset_bottom = 35.0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 150.0
+offset_bottom = 33.0
+theme_override_fonts/font = ExtResource("3_8l6uw")
+theme_override_font_sizes/font_size = 16
 text = "Pairs Left: "
+
+[node name="LblTimeLeft" type="Label" parent="HUD"]
+offset_left = 79.0
+offset_top = -9.0
+offset_right = 226.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("3_8l6uw")
+theme_override_font_sizes/font_size = 16
+text = "00:00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackGround" type="Sprite2D" parent="."]
+position = Vector2(164, 163)
+scale = Vector2(21.875, 20.9375)
+texture = ExtResource("4_7goxy")
 
 [node name="CardManager" type="Node" parent="."]
 script = ExtResource("1_k25xc")
@@ -38,64 +64,64 @@ one_shot = true
 [node name="CardPositions" type="Node" parent="CardManager"]
 
 [node name="0" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(70, 95)
+position = Vector2(102, 104)
 
 [node name="1" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(100, 95)
+position = Vector2(132, 104)
 
 [node name="2" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(130, 95)
+position = Vector2(162, 104)
 
 [node name="3" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(160, 95)
+position = Vector2(192, 104)
 
 [node name="4" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(190, 95)
+position = Vector2(222, 104)
 
 [node name="5" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(70, 135)
+position = Vector2(102, 144)
 
 [node name="6" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(100, 135)
+position = Vector2(132, 144)
 
 [node name="7" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(130, 135)
+position = Vector2(162, 144)
 
 [node name="8" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(160, 135)
+position = Vector2(192, 144)
 
 [node name="9" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(190, 135)
+position = Vector2(222, 144)
 
 [node name="10" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(70, 175)
+position = Vector2(102, 184)
 
 [node name="11" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(100, 175)
+position = Vector2(132, 184)
 
 [node name="12" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(130, 175)
+position = Vector2(162, 184)
 
 [node name="13" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(160, 175)
+position = Vector2(192, 184)
 
 [node name="14" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(190, 175)
+position = Vector2(222, 184)
 
 [node name="15" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(70, 220)
+position = Vector2(102, 229)
 
 [node name="16" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(100, 220)
+position = Vector2(132, 229)
 
 [node name="17" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(130, 220)
+position = Vector2(162, 229)
 
 [node name="18" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(160, 220)
+position = Vector2(192, 229)
 
 [node name="19" type="Marker2D" parent="CardManager/CardPositions"]
-position = Vector2(190, 220)
+position = Vector2(222, 229)
 
 [node name="Cards" type="Node2D" parent="CardManager"]
 
@@ -182,10 +208,10 @@ card_type = 1
 [node name="TmrStartGame" type="Timer" parent="CardManager"]
 
 [node name="LblStart" type="Label" parent="CardManager"]
-offset_left = 87.0
-offset_top = 110.0
-offset_right = 235.0
-offset_bottom = 179.0
+offset_left = 119.0
+offset_top = 119.0
+offset_right = 267.0
+offset_bottom = 188.0
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(74, 34)
 theme_override_font_sizes/font_size = 50
