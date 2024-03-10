@@ -1,15 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnv4q76vqid3"]
+[gd_scene load_steps=5 format=3 uid="uid://cnv4q76vqid3"]
 
+[ext_resource type="Script" path="res://game/script/game.gd" id="1_4rrcw"]
 [ext_resource type="Script" path="res://game/script/card_manager.gd" id="1_k25xc"]
+[ext_resource type="Script" path="res://game/script/hud.gd" id="1_nfen0"]
 [ext_resource type="PackedScene" uid="uid://12gtpxpb8621" path="res://game/scene/card.tscn" id="1_t8l60"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_4rrcw")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("1_nfen0")
+
+[node name="LblCardsLeft" type="Label" parent="HUD"]
+offset_left = 174.0
+offset_top = 9.0
+offset_right = 261.0
+offset_bottom = 32.0
+text = "Cards Left: "
 
 [node name="CardManager" type="Node" parent="."]
 script = ExtResource("1_k25xc")
 
+[node name="Graveyard" type="Marker2D" parent="CardManager"]
+position = Vector2(163, -58)
+
 [node name="TmrFlipDelay" type="Timer" parent="CardManager"]
-wait_time = 2.0
+wait_time = 0.5
 one_shot = true
 
 [node name="CardPositions" type="Node" parent="CardManager"]
@@ -17,21 +33,51 @@ one_shot = true
 [node name="Cards" type="Node" parent="CardManager"]
 
 [node name="Card" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
-position = Vector2(30, 29)
+position = Vector2(56, 79)
+card_type = 1
 
 [node name="Card2" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
-position = Vector2(61, 29)
+position = Vector2(93, 79)
+card_type = 1
 
 [node name="Card3" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
-position = Vector2(91, 30)
+position = Vector2(128, 81)
+card_type = 2
 
 [node name="Card4" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
-position = Vector2(28, 71)
+position = Vector2(56, 124)
+card_type = 3
 
 [node name="Card5" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
-position = Vector2(61, 72)
+position = Vector2(92, 123)
+card_type = 4
 
 [node name="Card6" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
-position = Vector2(91, 72)
+position = Vector2(126, 123)
+card_type = 5
+
+[node name="Card7" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
+position = Vector2(56, 165)
+card_type = 1
+
+[node name="Card8" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
+position = Vector2(93, 165)
+card_type = 1
+
+[node name="Card9" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
+position = Vector2(128, 167)
+card_type = 2
+
+[node name="Card10" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
+position = Vector2(56, 210)
+card_type = 3
+
+[node name="Card11" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
+position = Vector2(92, 209)
+card_type = 4
+
+[node name="Card12" parent="CardManager/Cards" instance=ExtResource("1_t8l60")]
+position = Vector2(126, 209)
+card_type = 5
 
 [connection signal="timeout" from="CardManager/TmrFlipDelay" to="CardManager" method="_on_tmr_flip_delay_timeout"]

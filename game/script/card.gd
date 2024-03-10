@@ -14,7 +14,7 @@ enum CARD_TYPE {
 	CLAEN
 }
 
-var card_type: int
+@export var card_type: int
 var is_face_showing: bool = false
 
 const BACK_FRAME = 0
@@ -24,6 +24,7 @@ var front_frame: int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	setup(card_type)
 	pass # Replace with function body.
 
 func reset() -> void:
@@ -53,11 +54,11 @@ func change_to_front():
 
 func change_to_back():
 	$Sprite2D.frame = BACK_FRAME
-	self.is_face_showing = true
+	
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index==1:
-		print(self.name)
+		print(self.card_type)
 		emit_signal("was_clicked", self)
 
 
@@ -66,3 +67,5 @@ func _on_animation_player_animation_finished(anim_name):
 		emit_signal("remove_me", self)
 	elif anim_name == "show_face":
 		emit_signal("done_flipping", self)
+	elif anim_name == "hide_face":
+		self.is_face_showing = false
