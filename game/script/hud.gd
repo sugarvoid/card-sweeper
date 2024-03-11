@@ -5,10 +5,7 @@ extends CanvasLayer
 
 
 func _ready():
-	pass # Replace with function body.
-
-func _process(delta):
-	pass
+	$GameOverOverlay.hide()
 
 func update_cards_left(num:int) -> void:
 	lbl_cards_left.text = str("Cards Left: ", num)
@@ -24,6 +21,7 @@ func update_card_labels(cards: Array[Card]) -> void:
 		$lblCard_1.text = str("Card 1: ", cards[0].name)
 	elif cards.size() == 2:
 		$lblCard_2.text = str("Card 2: ", cards[1].name)
-	
+
 func show_game_over() -> void:
+	$GameOverOverlay.show()
 	$AnimationPlayer.play("drop_gameover")

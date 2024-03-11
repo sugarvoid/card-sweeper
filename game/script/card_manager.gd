@@ -65,49 +65,31 @@ func new_game_shuffle() -> void:
 		c.setup(randi_range(1,4))
 	
 
-#FIXME: Not really working
 func _gen_card_type() -> int:
 	randomize()
 	var roll = randf()
-	
-
-	
-	print(roll)
+	# print(roll)
 	if roll <= NORMAL_CHANCE:
-		print("normal")
+		#print("normal")
 		return randi_range(1,4)
 	elif roll > NORMAL_CHANCE && roll <= (NORMAL_CHANCE + SKULL_CHANCE):
-		print("skull")
+		#print("skull")
 		return Card.CARD_TYPE.BAD
 	elif roll > (NORMAL_CHANCE + SKULL_CHANCE):
-		print("cross")
-		return Card.CARD_TYPE.CLAEN
-	
-	return -99
-	
-	#if roll < 0.6: #70% chance
-		#print("normal")
-		#return randi_range(1,4)
-	#elif roll < 0.3: #20% chance
-		#print("skull")
-		#return Card.CARD_TYPE.BAD
-		#
-	#else: #10% chance
 		#print("cross")
-		#return Card.CARD_TYPE.CLAEN
+		return Card.CARD_TYPE.CLAEN
+	return -99
 
 
 func add_a_card_to_borad() -> void:
 	var next_up: Card = graveyard_card.pop_front()
 	cards_on_board.push_back(next_up)
-	
 	next_up.setup(_gen_card_type())
 	card_amounts[str(next_up.card_type)] += 1
 	slots[next_up.slot] = true
 	next_up.slide_to_position()
 	next_up.is_on_board = true
 	emit_signal("on_card_amount_change", cards_on_board.size())
-	#update_card_list()
 
 func add_card_to_graveyard(c: Card) -> void:
 	c.reset()
@@ -122,7 +104,6 @@ func add_card_to_graveyard(c: Card) -> void:
 		graveyard_card.shuffle()
 		for _x in graveyard_card.size():
 			add_a_card_to_borad()
-	#update_card_list()
 
 func put_cards_facedown() -> void:
 	cards_clicked = 0
@@ -155,16 +136,11 @@ func flip_over_card(c: Card) -> void:
 			can_click = true
 
 func check_cards() -> void:
-	#TODO: Check if cards match 
 	cards_clicked = 0
 	if faceup_cards[0].card_type == faceup_cards[1].card_type:
 		print("they match")
 		can_click = false
-		emit_signal("pair_made")
-		
 		if faceup_cards[0].card_type == 6:
-			pass
-			#TODO: Remove one skull card
 			for card in cards_on_board:
 				if card.card_type == Card.CARD_TYPE.BAD:
 					card.faceup()
@@ -173,18 +149,10 @@ func check_cards() -> void:
 					remove_match()
 					return
 		if faceup_cards[0].card_type == 5:
-			#pass
 			emit_signal("on_gameover")
-			#TODO: Player matched skull
 			return
-			
-		#TODO: Remove cards from board
 		remove_match()
-		#for card in faceup_cards:
-			#card.fade_away()
-		#faceup_cards.clear()
 		emit_signal("card_flipped_over", faceup_cards)
-		
 		await get_tree().create_timer(0.5).timeout
 		can_click = true
 	else:
@@ -195,15 +163,14 @@ func remove_match() -> void:
 		card.fade_away()
 	faceup_cards.clear()
 
-func remove_card(c: Card) -> void:
-	print(str("remove card: ", c.name))
+#func remove_card(c: Card) -> void:
+	#print(str("remove card: ", c.name))
 
 func _on_tmr_flip_delay_timeout():
 	put_cards_facedown()
 
 
 func _on_tmr_start_game_timeout():
-	
 	var tween = get_tree().create_tween()
 	tween.tween_property($LblStart, "scale", Vector2(1,1), 0.8)
 	tween.tween_property($LblStart, "modulate:a", 0, 1)

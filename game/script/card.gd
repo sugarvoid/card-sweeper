@@ -24,17 +24,11 @@ var slot: int
 var board_position: Vector2
 var is_on_board: bool 
 
-func _ready():
-	pass
-	#setup(card_type)
 
 func reset() -> void:
 	self.modulate.a = 225
 	self.is_face_showing = false
 	change_to_back()
-
-func _process(delta):
-	pass
 
 func set_board_position(pos: Vector2):
 	board_position = pos
@@ -79,7 +73,6 @@ func on_board_placement():
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index==1:
-		#print(self.card_type)
 		emit_signal("was_clicked", self)
 
 func _on_animation_player_animation_finished(anim_name):
