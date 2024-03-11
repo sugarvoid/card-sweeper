@@ -49,6 +49,7 @@ offset_bottom = 56.0
 text = "Cards Left: "
 
 [node name="LblPairsLeft" type="Label" parent="HUD"]
+visible = false
 offset_left = 46.0
 offset_top = 1.0
 offset_right = 193.0

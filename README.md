@@ -1,38 +1,42 @@
 # Card Sweeper
 
-A card matching game
+An infinite card matching game. (A weekend project. No intentions on working on this anymore.)
 
+## How To Play :dart:
 
-## Info :dart:
-- Match cards
-- Matching two skulls will end the game
-- Matching two crosses, a skull will be removed from the board
-
-<hr>
-
-## Controls :joystick: 
-
-|Key|Action|
-|:---:|:---:|
-|Left Mouse|Flip Over Card|
+-   Match cards
+-   Matching two skulls will end the game
+-   Matching two crosses, a skull will be removed from the board
 
 <hr>
 
+## Controls :joystick:
+
+|    Key     |     Action     |
+| :--------: | :------------: |
+| Left Mouse | Flip Over Card |
+
+<hr>
 
 ## Credits
+
 ### Programming/Sprites
-- SugarVoid
+
+-   SugarVoid
 
 ### Font
-- Monogram by [datagoblin](https://datagoblin.itch.io/monogram) is licensed under [CC0](https://creativecommons.org/publicdomain/zero/1.0/)
+
+-   Monogram by [datagoblin](https://datagoblin.itch.io/monogram) is licensed under [CC0](https://creativecommons.org/publicdomain/zero/1.0/)
+
 ### Music :musical_keyboard:
-- 
+
+-
 
 <hr>
 
 This game uses Godot Engine, available under the following license:
 
-Copyright (c) 2007-2022 Juan Linietsky, Ariel Manzur. 
+Copyright (c) 2007-2022 Juan Linietsky, Ariel Manzur.
 
 Copyright (c) 2014-2022 Godot Engine contributors.
 
