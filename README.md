@@ -1,6 +1,9 @@
 # Card Sweeper
 
 An infinite card matching game. (A weekend project. No intentions on working on this anymore.)
+<br><br>
+[Play on itch](https://sugarvoid.itch.io/card-sweep) <br>
+Password: `game`
 
 ## How To Play :dart:
 
