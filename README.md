@@ -1,7 +1,11 @@
 # Card Sweeper
 
 An infinite card matching game. (A weekend project. No intentions on working on this anymore.)
-<br><br>
+<br>
+
+
+![](https://github.com/sugarvoid/card-sweeper/blob/master/card_sweep.gif)
+<br>
 [Play on itch](https://sugarvoid.itch.io/card-sweep) <br>
 Password: `game`
 
@@ -33,7 +37,7 @@ Password: `game`
 
 ### Music :musical_keyboard:
 
--
+- None
 
 <hr>
 
