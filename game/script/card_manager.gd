@@ -132,7 +132,7 @@ func flip_over_card(c: Card) -> void:
 		if !c.is_face_showing:
 			cards_clicked += 1
 			c.faceup()
-			await get_tree().create_timer(0.25).timeout
+			await get_tree().create_timer(0.2).timeout
 			can_click = true
 
 func check_cards() -> void:
@@ -144,7 +144,7 @@ func check_cards() -> void:
 			for card in cards_on_board:
 				if card.card_type == Card.CARD_TYPE.BAD:
 					card.faceup()
-					await get_tree().create_timer(0.5).timeout
+					await get_tree().create_timer(0.3).timeout
 					card.fade_away()
 					remove_match()
 					return

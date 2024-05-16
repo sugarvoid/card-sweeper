@@ -12,6 +12,7 @@ func _ready():
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept") and is_game_over:
 		print_debug("Reset Game")
+		get_tree().reload_current_scene()
 
 func update_cards_left(num:int) -> void:
 	lbl_cards_left.text = str("Cards Left: ", num)
