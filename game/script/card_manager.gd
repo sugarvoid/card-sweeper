@@ -28,7 +28,7 @@ var card_amounts: Dictionary = {
 
 func _ready() -> void:
 	slots.resize(20)
-	$TmrStartGame.start(5)
+	## $TmrStartGame.start(5)
 	new_game_shuffle()
 	for c: Card in $Cards.get_children():
 		add_card_to_graveyard(c)
@@ -44,13 +44,16 @@ func _ready() -> void:
 	
 	for i in range(20):
 		add_a_card_to_borad()
-		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_timer(0.1).timeout
 		
 	print(card_amounts)
+	_on_tmr_start_game_timeout()
 
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
+		#TODO: Don't count the cards in graveyard
+		#TODO: Actaully shuffle the card positions
 		for c: Card in $Cards.get_children():
 			c.fake_shuffle()
 
@@ -149,6 +152,7 @@ func check_cards() -> void:
 					remove_match()
 					return
 		if faceup_cards[0].card_type == 5:
+			#TODO: Instead of gameover, just shuffle the cards
 			emit_signal("on_gameover")
 			return
 		remove_match()

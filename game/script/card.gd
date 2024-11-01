@@ -25,6 +25,9 @@ var board_position: Vector2
 var is_on_board: bool 
 
 
+func _ready() -> void:
+	$Area2D.mouse_entered.connect(_mosue_entered)
+
 func reset() -> void:
 	self.modulate.a = 225
 	self.is_face_showing = false
@@ -59,6 +62,7 @@ func slide_to_position() -> void:
 	tween.tween_property(self, "position", board_position, 0.2)
 	tween.tween_callback(on_board_placement)
 
+
 func fake_shuffle() -> void:
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "position", Vector2(166,166), 1)
@@ -82,3 +86,6 @@ func _on_animation_player_animation_finished(anim_name):
 		emit_signal("done_flipping", self)
 	elif anim_name == "hide_face":
 		self.is_face_showing = false
+
+func _mosue_entered() -> void:
+	print("mouse entered ", self.name)
